@@ -5,7 +5,7 @@
                 <span>Site made with ❤️ by Zeon</span>
                 <span>
                     <a :title="gitInfo.LASTCOMMITDATETIME" target="_blank"
-                        :href="`https://github.com/NoonieBao/zeonsing/commit/${gitInfo.COMMIT_HASH}`">
+                        :href="`https://github.com/NoonieBao/PaceCalculator/commit/${gitInfo.COMMIT_HASH}`">
                         <img :src="`https://img.shields.io/badge/${gitInfo.VERSION}-F05032?style=flat&logo=git&logoColor=white`" :alt="gitInfo.VERSION">
                     </a>
                 </span>
