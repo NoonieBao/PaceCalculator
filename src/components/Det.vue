@@ -1,40 +1,50 @@
 <template>
   <div>
     <div style="padding: 5px;background-color: #abf;margin: 5px;">
-      <el-row :gutter="25" align="middle"  type="flex" class="row-bg" justify="space-around">
+      <el-row :gutter="25" align="middle" type="flex" class="row-bg" justify="space-around">
         <el-col :span="6">
-              <h2 v-if="isMile">
-                {{ distance.toFixed(1) }} mi
-              </h2>
-              <h2 v-if="!isMile">
-                {{ distance.toFixed(1) }} m
-              </h2>
+          <h2 v-if="isMile">
+            {{ distance.toFixed(1) }} mi
+          </h2>
+          <h2 v-if="!isMile">
+            {{ distance.toFixed(1) }} m
+          </h2>
         </el-col>
         <el-col :span="6">
-           <h3>
-          <template v-if="timeP.hours">
-            {{ timeP.hours.toString().padStart(2, '0') }}:</template>
-          {{ timeP.minutes.toString().padStart(2, '0') }}:
-          {{ timeP.seconds.toString().padStart(2, '0') }}
-        </h3>
+          <h3>
+            <template v-if="timeP.hours">
+              {{ timeP.hours.toString().padStart(2, '0') }}:
+            </template>
+            {{ timeP.minutes.toString().padStart(2, '0') }}:
+            {{ timeP.seconds.toString().padStart(2, '0') }}
+            <!-- .{{ Math.floor( timeP.milliseconds/100).toString().padStart(1, '0') }} -->
+
+            
+          </h3>
         </el-col>
         <el-col :span="6">
           <h3>
             {{ timeSpand.toFixed(1) }} s
           </h3>
         </el-col>
-        <el-col :span="5">
-        <el-button type="info" @click="moveHandler(-1)" icon="el-icon-caret-top" circle></el-button>
+        <el-col class="buttons" :span="5">
 
-        <el-button type="info" @click="moveHandler(1)" icon="el-icon-caret-bottom" circle></el-button>
+          <el-button type="info" @click="moveHandler(-1)" icon="el-icon-caret-top" circle></el-button>
 
-        <el-button type="info" @click="deleteHandler" icon="el-icon-delete-solid" circle></el-button>
+          <el-button type="info" @click="moveHandler(1)" icon="el-icon-caret-bottom" circle></el-button>
+
+          <el-button type="info" @click="deleteHandler" icon="el-icon-delete-solid" circle></el-button>
 
         </el-col>
       </el-row>
     </div>
   </div>
 </template>
+<style lang="less">
+.buttons >button{
+  margin: 3 3px !important;
+}
+</style>
 <script>
 export default {
   data() {
@@ -42,7 +52,8 @@ export default {
       timeP: {
         hours: 0,
         minutes: 0,
-        seconds: 0
+        seconds: 0,
+        milliseconds:0,
       }
     }
   },
@@ -84,13 +95,16 @@ export default {
       this.timeP.hours = qqq.hours();
       this.timeP.minutes = qqq.minutes();
       this.timeP.seconds = qqq.seconds();
+      this.timeP.milliseconds = qqq.milliseconds();
+      // console.log(qqq)
+      
     },
-    deleteHandler(){
+    deleteHandler() {
       this.$emit("deleteCard", this.index)
     },
-    moveHandler(direction){
-      console.log("direction",direction)
-      this.$emit("moveCard", this.index,direction)
+    moveHandler(direction) {
+      console.log("direction", direction)
+      this.$emit("moveCard", this.index, direction)
     }
     /**
     
