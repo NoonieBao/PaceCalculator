@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Grade :grade="grade"></Grade>
+  <div id="mainnn">
+    <!-- <Grade :grade="grade"></Grade> -->
 
     <el-row :gutter="20" v-if="0">
       <el-col :span="18">
@@ -268,4 +268,8 @@ export default {
 
 }
 </script>
-<style scoped></style>
+<style scoped>
+#mainnn{
+  width: 100%;
+}
+</style>
