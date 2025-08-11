@@ -111,8 +111,8 @@ export default {
         isMale: false,
       },
       defaultConfig: {
-        bpm: 170,
-        length: 145,
+        bpm: 175,
+        length: 135,
         bpmLock: false,
         lengthLock: false,
         version: 20240525,
